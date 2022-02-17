@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="_libs">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/pandas/_libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
