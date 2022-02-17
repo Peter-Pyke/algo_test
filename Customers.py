@@ -8,6 +8,5 @@ class Customer:
         current_demand = self.demand
         self.demand = current_demand - amount_satisfied
 
-    def update_satisfied(self, demand):
-        if demand == 0:
-            self.satisfied = True
+    def update_satisfied(self):
+        self.satisfied = True
