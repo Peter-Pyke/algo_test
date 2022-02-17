@@ -1,6 +1,20 @@
 import cost_data
+from Facility import Facility
+import Customers
 
-list_of_open_facilities_in_order = []  # Maybe just manually fill these lists
+f1 = Facility(1, 17391, 7936)
+f2 = Facility(2, 122740, 5931)
+f3 = Facility(3, 233153, 7499)
+f4 = Facility(4, 205967, 9643)
+f5 = Facility(5, 234507, 9556)
+f6 = Facility(6, 42050, 8585)
+f7 = Facility(7, 90581, 11130)
+f8 = Facility(8, 230641, 8229)
+f9 = Facility(9, 52511, 7316)
+f10 = Facility(10, 103429, 11935)
+
+
+list_of_open_facilities_in_order = [f3, f8, f5, f4, f2, f10, f7, f9, f6, f1]  # Maybe just manually fill these lists
 list_of_customer_with_demain = []
 my_cost_matrix = cost_data.load_cost_data("cost_data.txt")
 

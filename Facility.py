@@ -1,6 +1,7 @@
 class Facility:
-    def __init__(self, facility_id, capacity):
+    def __init__(self, facility_id, fixed_cost, capacity):
         self.facility_id = facility_id
+        self.fixed_cost = fixed_cost
         self.capacity = capacity
         self.open = True
 
@@ -9,4 +10,10 @@ class Facility:
             self.open = False
         else:
             self.capacity = current_capacity
+
+
+
+
+
+
 
