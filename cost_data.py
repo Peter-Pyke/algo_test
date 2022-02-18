@@ -10,6 +10,6 @@ my_matrix = load_cost_data("cost_data.txt")
 
 
 def get_cost_data(customer, facility, cost_matrix):
-    cost = cost_matrix[facility][customer]
+    cost = int(cost_matrix[facility-1][customer-1])
     return cost
 
