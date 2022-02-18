@@ -46,7 +46,7 @@ c30 = Customer(30, 794)
 
 list_of_open_facilities_in_order = [f3, f8, f5, f4, f2, f10, f7, f9, f6, f1]  # Maybe just manually fill these lists
 list_of_customer_with_demand = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14,
-                                c15, c16, c17, c18, c19, c20, c21, c23, c24, c25, c26, c27, c28, c29, c30]
+                                c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30]
 my_cost_matrix = cost_data.load_cost_data("cost_data.txt")
 
 customer_id = list_of_customer_with_demand[0].cust_id
