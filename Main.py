@@ -1,3 +1,4 @@
+
 import cost_data
 from Facility import Facility
 from Customers import Customer
@@ -52,9 +53,11 @@ my_cost_matrix = cost_data.load_cost_data("cost_data.txt")
 customer_id = list_of_customer_with_demand[0].cust_id
 copy_of_list_of_customers = list_of_customer_with_demand.copy()
 copy_of_list_of_facilities = list_of_open_facilities_in_order.copy()
-
+total_cost = 0
+facility_used = []
 while list_of_customer_with_demand:
     for facility in copy_of_list_of_facilities:
+        facility_used.append(facility)
         if facility.open:
             if list_of_customer_with_demand:
                 lowest_cost = 10000
@@ -65,16 +68,26 @@ while list_of_customer_with_demand:
                     elif lowest_cost > cost_data.get_cost_data(customer.cust_id, facility.facility_id, my_cost_matrix):
                         lowest_cost = cost_data.get_cost_data(customer.cust_id, facility.facility_id, my_cost_matrix)
                         lowest_cost_customer = customer
+                total_cost += lowest_cost
                 if lowest_cost_customer.demand < facility.capacity:
                     current_capacity = facility.capacity - lowest_cost_customer.demand
                     facility.update_facility(current_capacity)
                     lowest_cost_customer.update_demand(lowest_cost_customer.demand)
                     lowest_cost_customer.update_satisfied()
                     list_of_customer_with_demand.remove(lowest_cost_customer)
-                elif facility.capacity < lowest_cost_customer:
+                    break
+                elif facility.capacity < lowest_cost_customer.demand:
                     lowest_cost_customer.update_demand(facility.capacity)
                     facility.update_facility(0)
                     list_of_open_facilities_in_order.remove(facility)
+
+total_fix_cost = 0
+facility_used = list(dict.fromkeys(facility_used))
+for facility in facility_used:
+    total_fix_cost += facility.fixed_cost
+    print(facility.facility_id)
+
+print(total_fix_cost)
 
 
 
