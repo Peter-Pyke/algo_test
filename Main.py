@@ -52,7 +52,8 @@ my_cost_matrix = cost_data.load_cost_data("cost_data.txt")
 customer_id = list_of_customer_with_demand[0].cust_id
 copy_of_list_of_customers = list_of_customer_with_demand.copy()
 copy_of_list_of_facilities = list_of_open_facilities_in_order.copy()
-
+for facility in list_of_open_facilities_in_order:
+    print(facility.capacity)
 while list_of_customer_with_demand:
     for facility in copy_of_list_of_facilities:
         if facility.open:
@@ -75,7 +76,8 @@ while list_of_customer_with_demand:
                     lowest_cost_customer.update_demand(facility.capacity)
                     facility.update_facility(0)
                     list_of_open_facilities_in_order.remove(facility)
-
+for facility in list_of_open_facilities_in_order:
+    print(facility.capacity)
 
 
 
