@@ -44,8 +44,8 @@ c27 = Customer(27, 1434)
 c28 = Customer(28, 1175)
 c29 = Customer(29, 1297)
 c30 = Customer(30, 794)
-
-list_of_open_facilities_in_order = [f3, f8, f5, f4, f2, f10, f7, f9, f6, f1]  # Maybe just manually fill these lists
+# f1, f6, f9, f7, f10, f2, f4, f5, f8, f3
+list_of_open_facilities_in_order = [f1, f6, f9, f7, f10, f2, f4, f5, f8, f3]  # Maybe just manually fill these lists
 list_of_customer_with_demand = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14,
                                 c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30]
 my_cost_matrix = cost_data.load_cost_data("cost_data.txt")
@@ -55,10 +55,7 @@ copy_of_list_of_customers = list_of_customer_with_demand.copy()
 copy_of_list_of_facilities = list_of_open_facilities_in_order.copy()
 
 
-for facility in list_of_open_facilities_in_order:
-    print(facility.capacity)
-
-total_cost = 0
+total_transport_cost = 0
 facility_used = []
 
 while list_of_customer_with_demand:
@@ -74,7 +71,7 @@ while list_of_customer_with_demand:
                     elif lowest_cost > cost_data.get_cost_data(customer.cust_id, facility.facility_id, my_cost_matrix):
                         lowest_cost = cost_data.get_cost_data(customer.cust_id, facility.facility_id, my_cost_matrix)
                         lowest_cost_customer = customer
-                total_cost += lowest_cost
+                total_transport_cost += lowest_cost
                 if lowest_cost_customer.demand < facility.capacity:
                     current_capacity = facility.capacity - lowest_cost_customer.demand
                     facility.update_facility(current_capacity)
@@ -87,17 +84,16 @@ while list_of_customer_with_demand:
                     facility.update_facility(0)
                     list_of_open_facilities_in_order.remove(facility)
 
-for facility in list_of_open_facilities_in_order:
-    print(facility.capacity)
-
 
 total_fix_cost = 0
 facility_used = list(dict.fromkeys(facility_used))
 for facility in facility_used:
-    total_fix_cost += facility.fixed_cost
     print(facility.facility_id)
+for facility in facility_used:
+    total_fix_cost += facility.fixed_cost
+    print(facility.capacity)
 
-print(total_fix_cost)
+print(total_fix_cost + total_transport_cost)
 
 
 
