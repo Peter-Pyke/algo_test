@@ -12,6 +12,8 @@ transportation_cost = []
 facilities, customer, fixed_cost ect and the if statement to know if that row of data has been passed.
 The way pulling data from a text file works, is it goes to a row and indexes that row by each character
 in the string of that row unless you provide a delimiter(in this case we use \t or tab)."""
+
+
 def load_cost_data(file_name):
     facilities = True
     customers = True
@@ -42,5 +44,6 @@ def load_cost_data(file_name):
             else:
                 print(len(row.split("\t")))
         print(facilities_fixed_cost)
+
 
 load_cost_data("Sample_Data_tab.txt")
