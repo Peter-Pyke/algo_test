@@ -60,8 +60,9 @@ while list_of_customers:
                     elif lowest_cost > cost_data.get_cost_data(customer.cust_id, facility.facility_id, my_cost_matrix):
                         lowest_cost = cost_data.get_cost_data(customer.cust_id, facility.facility_id, my_cost_matrix)
                         lowest_cost_customer = customer
-                total_transport_cost += lowest_cost
+
                 if lowest_cost_customer.demand < facility.capacity:
+                    total_transport_cost += lowest_cost * lowest_cost_customer.demand
                     current_capacity = int(facility.capacity) - int(lowest_cost_customer.demand)
                     facility.update_facility(current_capacity)
                     lowest_cost_customer.update_demand(lowest_cost_customer.demand)
@@ -69,6 +70,7 @@ while list_of_customers:
                     list_of_customers.remove(lowest_cost_customer)
                     break
                 elif facility.capacity < lowest_cost_customer.demand:
+                    total_transport_cost += lowest_cost * facility.capacity
                     lowest_cost_customer.update_demand(facility.capacity)
                     facility.update_facility(0)
                     list_of_facilities_in_order.remove(facility)
