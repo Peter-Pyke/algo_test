@@ -15,7 +15,7 @@ list_of_facilities = []
 list_of_customers = []
 
 # function to load our data from text file to empty lists above
-load_cost_data("Sample_Data_tab.txt", number_of_facilities, number_of_customers, fixed_costs,
+load_cost_data("data2.txt", number_of_facilities, number_of_customers, fixed_costs,
                demands, capacities, transport_costs)
 
 # loop to create facility list unordered

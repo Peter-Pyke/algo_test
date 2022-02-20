@@ -18,25 +18,26 @@ def load_cost_data(file_name, number_of_facilities, number_of_customers,
     transport_cost = True
     with open(file_name) as our_data:
         for row in our_data:
-            if len(row.split("\t")) == 2 and facilities:
+            if len(row.split("\t")) == 29 and facilities:
                 number_of_facilities.append(row.split("\t"))
                 facilities = False
-            elif len(row.split("\t")) == 2 and customers:
+            elif len(row.split("\t")) == 28 and customers:
                 number_of_customers.append(row.split("\t"))
                 customers = False
-            elif len(row.split("\t")) == 11 and fixed_cost:
+            elif len(row.split("\t")) == 28 and fixed_cost:
                 fixed_costs.append(row.split("\t"))
                 fixed_cost = False
             elif len(row.split("\t")) == 30 and demand:
                 demands.append(row.split("\t"))
                 demand = False
-            elif len(row.split("\t")) == 11 and capacity:
+            elif len(row.split("\t")) == 27 and capacity:
                 capacities.append(row.split("\t"))
                 capacity = False
             elif len(row.split("\t")) == 30:
                 transport_costs.append(row.split("\t"))
             else:
                 print(len(row.split("\t")))
+                print(row.split("\t"))
 
 
 def order_facility_list(list_of_facilities):
